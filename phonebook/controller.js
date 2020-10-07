@@ -5,16 +5,30 @@ angular.module('app', [])
 
             phoneBook.list = [];
 
+            phoneBook.operators = ['OI', 'VIVO', 'CLARO', 'TIM'];
+
             phoneBook.add = function()
             {
 
-                phoneBook.list.push({ name: phoneBook.name, phone: phoneBook.phone });
+                phoneBook.list.push({ name: phoneBook.name, phone: phoneBook.phone, operator: phoneBook.operator, date: new Date() });
+                
+                phoneBook.name = "";
+                phoneBook.phone = "";
+                phoneBook.operator = "";
 
             }
 
-            phoneBook.delete = function(contact)
-                {
-                    phoneBook.list = phoneBook.list.filter(item => item !== contact);
-                }
+            phoneBook.delete = function()
+            {
+                phoneBook.list = phoneBook.list.filter(item => !item.selected);
+                    
+            }
+
+            phoneBook.organize = function (field) {
+                
+                phoneBook.criterionOrganize = field
+                phoneBook.directionOrganize = !phoneBook.directionOrganize
+
+            }
 
         });
