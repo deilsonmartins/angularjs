@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="./controllers/todo.js"></script>
+    <link rel="stylesheet" href="./styles/todo.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body class="bg-dark container-md">
+    <h2 class="text-white" ng-controller="todoController">Gerencie suas tarefas gratuitamente.</h2>
+    <div class="form-group form-control-lg"  ng-controller="todoController as todoList">
+        <span class="text-white form-text">{{todoList.completed()}} tarefas concluídas de {{todoList.todos.length}} no total.</span>
+        [<a href="" ng-click = "todoList.archive()">Arquivar tarefas concluídas</a>]
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="todo in todoList.todos">
+                <label type="checkbox">
+                    <input type="checkbox" ng-model="todo.done" />
+                    <span class="form-text text-muted done-{{todo.done}}">{{todo.text}}</span>
+                </label>
+            </li>
+        </ul>
+        <form ng-submit="todoList.addTodo()">
+            <input class="form-control" type="text" ng-model="todoList.todoText" size="30" placeholder="Insira a sua tarefa">
+            <input class="form-control btn btn-primary" type="submit" value="Adicionar">
+        </form>
+    </div>
+    
+</body>
+</html>
