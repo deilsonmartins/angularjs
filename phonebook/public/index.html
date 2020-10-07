@@ -15,9 +15,9 @@
         crossorigin="anonymous">
     <link 
         rel="stylesheet" 
-        href="styles.css"/>
+        href="../src/styles/index.css"/>
     <script 
-        src="controller.js">
+        src="../src/js/controllers/PhoneBookController.js">
     </script>
     <title>Phone Book</title>
 </head>
@@ -102,13 +102,13 @@
                 class="alert alert-danger">
                 Enter with phone.
             </div>
-
+            
             <div 
                 ng-show="formContact.phone.$error.minlength" 
                 class="alert alert-danger">
                 Phone is required 11 digits.
             </div>
-          
+            
             <div 
                 ng-show="formContact.operator.$error.required" 
                 class="alert alert-danger">
